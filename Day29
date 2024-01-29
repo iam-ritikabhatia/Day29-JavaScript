@@ -1,0 +1,87 @@
+// Math.clz32() is used to calculate leading zeros in 32 bit binary representation
+
+
+
+// First we will represent a number into 32 bit binary form
+
+let aNumber = 916; // this is a number
+
+let NumberInBinaryNumberString = aNumber.toString(2); // toString() method will convert a into string of numbers formats of a, now using (), we have to decide in which format we want the number like decimal(base is 10), binary(base is 2), octadecimal(base is 8), hexadecimal(base is 16)
+// So we use base 2 for binary representation
+
+let NumberInDecimalNumberString = aNumber.toString(10); // base is 10 means decimal numbers
+
+let NumberInOctaDecimalNumberString = aNumber.toString(8); // base is 8 means octadecimal numbers
+
+let NumberInHexaDecimalNumberString = aNumber.toString(16); // base is 16 means hexadecimal numbers
+
+let NumberHasLength32 = NumberInBinaryNumberString.padStart(32, 0); // 32 is the length and 0 is the pad string (This will ensure that the lenght of c is 32)
+
+console.log(`The Number ${aNumber} in decimal numbers representation:- ${NumberInDecimalNumberString}`);
+console.log(`The Number ${aNumber} in octadecimal numbers representation:- ${NumberInOctaDecimalNumberString}`);
+console.log(`The Number ${aNumber} in hexadecimal numbers representation:- ${NumberInHexaDecimalNumberString}`);
+
+console.log(`Binary representationof ${aNumber} in 32 bit binary representation is ${NumberHasLength32}`);
+
+let LeadingZeros = Math.clz32(aNumber);
+
+console.log(`The leading zeros in ${aNumber} in binary representation are ${LeadingZeros}`);
+
+
+<!-- cos.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math.cos() method</title>
+  </head>
+  <body>
+    <h1>
+      Note: we are using html because in node.js, prompt() function will not
+      work
+    </h1>
+    <h2>Math.cos() method is used to find the cosine of a number in radians</h2>
+    <div
+      class="calculation"
+      style="
+        margin-top: 3em;
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        height: 200px;
+        justify-content: space-between;
+      "
+    >
+      <input type="text" placeholder="Enter a number" id="anumber" />
+      <button onclick="calculate()">Calculate Cosine</button>
+      <h4 id="Inradian"></h4>
+      <h4 id="Indegree"></h4>
+    </div>
+
+    <script>
+     
+
+      function calculate() {
+        const theNumber = document.getElementById("anumber");
+        const Radian = document.getElementById("Inradian");
+        const Degree = document.getElementById("Indegree");
+        const N = theNumber.value;
+        const InRadian = Math.cos(N);
+
+
+        Radian.innerHTML = `The value of cosine in Radian is ${InRadian}`;
+        
+        let degree = function(){
+            const InDegree = (Math.PI/180)*InRadian;
+
+            Degree.innerHTML = `The value of cosine in Degree is ${InDegree}`;
+        }
+        degree();
+        
+      }
+
+    </script>
+  </body>
+</html>
